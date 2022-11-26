@@ -1,12 +1,12 @@
 const MARCA = "CASA DE CAMBIO SIGLO XXI"
-const BIENVENIDA = ("Bienvenido a la " + MARCA);
+const BIENVENIDA = ("¡Bienvenido a la " + MARCA+"!");
 
 console.log(MARCA);
 alert(MARCA);
 
-let nombre = prompt("Ingrese su nombre").toUpperCase();
-let apellido = prompt("Ingrese su apellido").toUpperCase();
-let correo = prompt("Ingrese su dirección de Correo Electrónico").toUpperCase();
+let nombre = prompt("Ingrese su Nombre").toUpperCase();
+let apellido = prompt("Ingrese su Apellido").toUpperCase();
+let correo = prompt("Ingrese su Dirección de Correo Electrónico").toUpperCase();
 
 let dolarCompra = 170;
 let euroCompra = 180;
@@ -15,6 +15,8 @@ let realCompra = 40;
 let dolarVenta = 180;
 let euroVenta = 190;
 let realVenta = 50;
+
+let cantidadDivisaCompra = 0;
 
 const IMPUESTO_PAIS = 0.30;
 const IMPUESTO_GANANCIA = 0.45;
@@ -28,8 +30,8 @@ function elegirOperacion() {
     switch (operacion) {
         case 1:
 
-            console.log("Quieres Consultar el Precio de una divisa!");
-            alert("Quieres Consultar el Precio de una divisa!");
+            console.log("¡Quieres Consultar el Precio de una divisa!");
+            alert("¡Quieres Consultar el Precio de una divisa!");
             consultaGeneral();
             volver();
 
@@ -93,8 +95,6 @@ function consulta(nombreConsulta) {
 
 function compra() {
 
-    let cantidadDivisaCompra = 0;
-
     let seleccionDivisaCompra = parseInt(prompt("¿Qué tipo de Divisa deseas comprar? (Ingresa el número de la opción correspondiente):" + "\n\n" + "1.- Dólar" + "\n" + "2.- Euro" + "\n" + "3.- Real" + "\n" + "4.- Volver al Inicio" + "\n"));
 
     switch (seleccionDivisaCompra) {
@@ -124,8 +124,6 @@ function compra() {
 }
 
 function venta() {
-
-    let cantidadDivisaVenta = 0;
 
     let seleccionDivisaVenta = parseInt(prompt("¿Qué tipo de Divisa deseas vender? (Ingresa el número de la opción correspondiente):" + "\n\n" + "1.- Dólar" + "\n" + "2.- Euro" + "\n" + "3.- Real" + "\n" + "4.- Volver al Inicio" + "\n"));
 
@@ -221,12 +219,12 @@ function calcularCambioVenta(nombreDivisa, tasaCambio) {
 }
 
 function volver() {
-    inicio = parseInt(prompt("Qué deseas hacer ahora? (Ingresa el número de la opción correspondiente): " + "\n\n" + (("1.- Volver al Inicio").toString()) + "\n" + (("2.- Salir\n".toString()))));
+    inicio = parseInt(prompt("¿Seguro quieres Salir? (Ingresa el número de la opción correspondiente): " + "\n\n" + (("1.- Volver al Inicio").toString()) + "\n" + (("2.- Salir\n".toString()))));
 }
 
 function salida() {
-    console.log("Gracias por preferir a " + MARCA + ". Será para una próxima ocasión. Hasta Luego!");
-    alert("Gracias por preferir a " + MARCA + ". Será para una próxima ocasión. Hasta Luego!");
+    console.log("Gracias por preferir a " + MARCA + ". Será para una próxima ocasión. ¡Hasta Luego!");
+    alert("Gracias por preferir a " + MARCA + ". Será para una próxima ocasión. ¡Hasta Luego!");
 }
 
 if ((nombre !== "") && (apellido !== "") && (correo !== "")) {
