@@ -36,14 +36,14 @@ function elegirOperacion() {
             break;
         case 2:
 
-            consultaCompra();
+            consulta("Compra");
             compra();
             volver();
 
             break;
         case 3:
 
-            consultaVenta();
+            consulta("Venta");
             venta();
             volver();
 
@@ -67,14 +67,28 @@ function consultaGeneral() {
     alert("El precio de las Divisas para la Compra es: " + "\n" + ("Dólar = " + dolarCompra.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroCompra.toString() + " AR $ por euro.") + "\n" + ("Real = " + realCompra.toString() + " AR $ por real.") + "\n\n" + "El precio de las Divisas para la Venta es: " + "\n" + ("Dólar = " + dolarVenta.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroVenta.toString() + " AR $ por euro.") + "\n" + ("Real = " + realVenta.toString() + " AR $ por real.") + "\n");
 }
 
-function consultaCompra() {
-    console.log("El precio de las Divisas para la Compra es: " + "\n" + ("Dólar = " + dolarCompra.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroCompra.toString() + " AR $ por euro.") + "\n" + ("Real = " + realCompra.toString() + " AR $ por real.") + "\n");
-    alert("El precio de las Divisas para la Compra es: " + "\n" + ("Dólar = " + dolarCompra.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroCompra.toString() + " AR $ por euro.") + "\n" + ("Real = " + realCompra.toString() + " AR $ por real.") + "\n");
-}
+function consulta(nombreConsulta) {
+    
+    let dolarTasa = "";
+    let euroTasa = "";
+    let realTasa = "";
 
-function consultaVenta() {
-    console.log("El precio de las Divisas para la Venta es: " + "\n" + ("Dólar = " + dolarVenta.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroVenta.toString() + " AR $ por euro.") + "\n" + ("Real = " + realVenta.toString() + " AR $ por real.") + "\n");
-    alert("El precio de las Divisas para la Venta es: " + "\n" + ("Dólar = " + dolarVenta.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroVenta.toString() + " AR $ por euro.") + "\n" + ("Real = " + realVenta.toString() + " AR $ por real.") + "\n");
+    if (nombreConsulta==="Compra") {
+        
+        dolarTasa = dolarCompra;
+        euroTasa = euroCompra;
+        realTasa = realCompra;
+
+    }else{
+
+        dolarTasa = dolarVenta;
+        euroTasa = euroVenta;
+        realTasa = realVenta;
+    }
+    
+    console.log("El precio de las Divisas para la " + nombreConsulta + " es: " + "\n" + ("Dólar = " + dolarTasa.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroTasa.toString() + " AR $ por euro.") + "\n" + ("Real = " + realTasa.toString() + " AR $ por real.") + "\n");
+    alert("El precio de las Divisas para la " + nombreConsulta + " es: " + "\n" + ("Dólar = " + dolarTasa.toString() + " AR $ por dólar.") + "\n" + ("Euro = " + euroTasa.toString() + " AR $ por euro.") + "\n" + ("Real = " + realTasa.toString() + " AR $ por real.") + "\n");
+
 }
 
 function compra() {
@@ -86,64 +100,15 @@ function compra() {
     switch (seleccionDivisaCompra) {
         case 1:
 
-            cantidadDivisaCompra = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas comprar (Puedes usar decimales):"));
-            console.log("Quieres Comprar " + cantidadDivisaCompra + " " + "Dólares");
-            alert("Quieres Comprar " + cantidadDivisaCompra + " " + "Dólares");
-
-            let subTotalDolarCompra = cantidadDivisaCompra * dolarCompra;
-            console.log("El detalle de la operación es: \n" + "AR $ " + subTotalDolarCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
-            alert("El detalle de la operación es: \n" + "AR $ " + subTotalDolarCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
-
-            let subTotalPaisDolarCompra = subTotalDolarCompra * IMPUESTO_PAIS;
-            let subTotalGananciaDolarCompra = subTotalDolarCompra * IMPUESTO_GANANCIA;
-            let totalDolarCompra = subTotalDolarCompra + subTotalPaisDolarCompra + subTotalGananciaDolarCompra;
-
-            console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalDolarCompra.toString());
-            alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalDolarCompra.toString());
-
-            console.log("Gracias por preferir a " + MARCA);
-            alert("Gracias por preferir a " + MARCA);
-
+            calcularCambioCompra("Dólares", dolarCompra);
 
             break;
         case 2:
-            cantidadDivisaCompra = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
-            console.log("Quieres Comprar " + cantidadDivisaCompra + " " + "Euros");
-            alert("Quieres Comprar " + cantidadDivisaCompra + " " + "Euros");
-
-            let subTotalEuroCompra = cantidadDivisaCompra * euroCompra;
-            console.log("El detalle de la operación es: \n" + subTotalEuroCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
-            alert("El detalle de la operación es: \n" + subTotalEuroCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
-
-            let subTotalPaisEuroCompra = subTotalEuroCompra * IMPUESTO_PAIS;
-            let subTotalGananciaEuroCompra = subTotalEuroCompra * IMPUESTO_GANANCIA;
-            let totalEuroCompra = subTotalEuroCompra + subTotalPaisEuroCompra + subTotalGananciaEuroCompra;
-
-            console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalEuroCompra.toString());
-            alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalEuroCompra.toString());
-
-            console.log("Gracias por preferir a " + MARCA);
-            alert("Gracias por preferir a " + MARCA);
+            calcularCambioCompra("Euros", euroCompra);
 
             break;
         case 3:
-            cantidadDivisaCompra = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
-            console.log("Quieres Comprar " + cantidadDivisaCompra + " " + "Reales");
-            alert("Quieres Comprar " + cantidadDivisaCompra + " " + "Reales");
-
-            let subTotalRealCompra = cantidadDivisaCompra * realCompra;
-            console.log("El detalle de la operación es: \n" + subTotalRealCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
-            alert("El detalle de la operación es: \n" + subTotalRealCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
-
-            let subTotalPaisRealCompra = subTotalRealCompra * IMPUESTO_PAIS;
-            let subTotalGananciaRealCompra = subTotalRealCompra * IMPUESTO_GANANCIA;
-            let totalRealCompra = subTotalRealCompra + subTotalPaisRealCompra + subTotalGananciaRealCompra;
-
-            console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalRealCompra.toString());
-            alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalRealCompra.toString());
-
-            console.log("Gracias por preferir a " + MARCA);
-            alert("Gracias por preferir a " + MARCA);
+            calcularCambioCompra("Reales", realCompra);
 
             break;
         case 4:
@@ -166,57 +131,19 @@ function venta() {
 
     switch (seleccionDivisaVenta) {
         case 1:
-            cantidadDivisaVenta = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
-            console.log("Quieres Vender " + cantidadDivisaVenta + " " + "Dólares");
-            alert("Quieres Vender " + cantidadDivisaVenta + " " + "Dólares");
 
-            let subTotalDolarVenta = cantidadDivisaVenta * dolarVenta;
-            console.log("El detalle de la operación es: \n" + "AR $ " + subTotalDolarVenta.toString());
-            alert("El detalle de la operación es: \n" + "AR $ " + subTotalDolarVenta.toString());
-
-
-            console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalDolarVenta.toString());
-            alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalDolarVenta.toString());
-
-            console.log("Gracias por preferir a " + MARCA);
-            alert("Gracias por preferir a " + MARCA);
-
+            calcularCambioVenta("Dólares", dolarVenta);
 
             break;
         case 2:
-            cantidadDivisaVenta = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
-            console.log("Quieres Vender " + cantidadDivisaVenta + " " + "Euros");
-            alert("Quieres Vender " + cantidadDivisaVenta + " " + "Euros");
 
-            let subTotalEuroVenta = cantidadDivisaVenta * euroVenta;
-            console.log("El detalle de la operación es: \n" + "AR $ " + subTotalEuroVenta.toString());
-            alert("El detalle de la operación es: \n" + "AR $ " + subTotalEuroVenta.toString());
-
-
-            console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalEuroVenta.toString());
-            alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalEuroVenta.toString());
-
-            console.log("Gracias por preferir a " + MARCA);
-            alert("Gracias por preferir a " + MARCA);
+            calcularCambioVenta("Euros", euroVenta);
 
 
             break;
         case 3:
-            cantidadDivisaVenta = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
-            console.log("Quieres Vender " + cantidadDivisaVenta + " " + "Reales");
-            alert("Quieres Vender " + cantidadDivisaVenta + " " + "Reales");
 
-            let subTotalRealVenta = cantidadDivisaVenta * realVenta;
-            console.log("El detalle de la operación es: \n" + "AR $ " + subTotalRealVenta.toString());
-            alert("El detalle de la operación es: \n" + "AR $ " + subTotalRealVenta.toString());
-
-
-            console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalRealVenta.toString());
-            alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalRealVenta.toString());
-
-            console.log("Gracias por preferir a " + MARCA);
-            alert("Gracias por preferir a " + MARCA);
-
+            calcularCambioVenta("Reales", realVenta);
 
             break;
         case 4:
@@ -229,6 +156,68 @@ function venta() {
             compra();
             break;
     }
+}
+
+function calcularCambioCompra(nombreDivisa, tasaCambio) {
+
+    do {
+
+        cantidadDivisaCompra = prompt("Ingrese la cantidad expresada en números de la Divisa que deseas comprar (Puedes usar decimales):");
+
+        if (isNaN(cantidadDivisaCompra)) {
+            console.log("Solo puedes ingresar un número");
+            alert("Solo puedes ingresar un número");
+        }
+
+    } while (isNaN(cantidadDivisaCompra));
+
+    console.log("Quieres Comprar " + cantidadDivisaCompra + " " + nombreDivisa);
+    alert("Quieres Comprar " + cantidadDivisaCompra + " " + nombreDivisa);
+
+    let subTotalCompra = cantidadDivisaCompra * tasaCambio;
+    console.log("El detalle de la operación es: \n" + "AR $ " + subTotalCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
+    alert("El detalle de la operación es: \n" + "AR $ " + subTotalCompra.toString() + " + 30% de Impuesto País + 45% de Impuesto la Ganancia");
+
+    let subTotalPaisCompra = subTotalCompra * IMPUESTO_PAIS;
+    let subTotalGananciaCompra = subTotalCompra * IMPUESTO_GANANCIA;
+    let totalCompra = subTotalCompra + subTotalPaisCompra + subTotalGananciaCompra;
+
+    console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalCompra.toString());
+    alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEl total de la operación es de AR $" + totalCompra.toString());
+
+    console.log("Gracias por preferir a " + MARCA);
+    alert("Gracias por preferir a " + MARCA);
+
+}
+
+function calcularCambioVenta(nombreDivisa, tasaCambio) {
+
+    do {
+
+        cantidadDivisaVenta = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
+
+        if (isNaN(cantidadDivisaVenta)) {
+            console.log("Solo puedes ingresar un número");
+            alert("Solo puedes ingresar un número");
+        }
+
+    } while (isNaN(cantidadDivisaVenta));
+
+
+    console.log("Quieres Vender " + cantidadDivisaVenta + " " + nombreDivisa);
+    alert("Quieres Vender " + cantidadDivisaVenta + " " + nombreDivisa);
+
+    let subTotalVenta = cantidadDivisaVenta * tasaCambio;
+    console.log("El detalle de la operación es: \n" + "AR $ " + subTotalVenta.toString());
+    alert("El detalle de la operación es: \n" + "AR $ " + subTotalVenta.toString());
+
+
+    console.log("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalVenta.toString());
+    alert("Datos de la Operación: \n" + nombre + " " + apellido + ", " + correo + ": \nEn total recibirás AR $" + subTotalVenta.toString());
+
+    console.log("Gracias por preferir a " + MARCA);
+    alert("Gracias por preferir a " + MARCA);
+
 }
 
 function volver() {
