@@ -165,8 +165,8 @@ function calcularCambioCompra(nombreDivisa, tasaCambio) {
         cantidadDivisaCompra = prompt("Ingrese la cantidad expresada en números de la Divisa que deseas comprar (Puedes usar decimales):");
 
         if (isNaN(cantidadDivisaCompra)) {
-            console.log("Solo puedes ingresar un número");
-            alert("Solo puedes ingresar un número");
+            console.log("Solo puedes Ingresar un número");
+            alert("Solo puedes Ingresar un número");
         }
 
     } while (isNaN(cantidadDivisaCompra));
@@ -197,8 +197,8 @@ function calcularCambioVenta(nombreDivisa, tasaCambio) {
         cantidadDivisaVenta = parseFloat(prompt("Ingrese la cantidad expresada en números de la Divisa que deseas vender (Puedes usar decimales):"));
 
         if (isNaN(cantidadDivisaVenta)) {
-            console.log("Solo puedes ingresar un número");
-            alert("Solo puedes ingresar un número");
+            console.log("Solo puedes Ingresar un número");
+            alert("Solo puedes Ingresar un número");
         }
 
     } while (isNaN(cantidadDivisaVenta));
